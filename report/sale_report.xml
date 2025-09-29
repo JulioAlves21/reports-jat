@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <report id="reportsale" 
+          string="Reporte de Vebtas" 
+          model="sale.order" 
+          report_type="qweb-pdf" 
+          name="report.saleReportInternallayout"
+          file="report.saleReportInternallayout"
+          menu="True" 
+         /> 
+    <data>
+        <template id="saleReportInternallayout" >
+            <t t-call="web.html_container">
+                    <t t-call="web.internal_layout">
+                        <div class="page" style="font-size:18px">
+                                <div class="row">
+                                    <div class="col-md-12" align="left">
+                                        <h2>Reporte Ventas </h2>
+                                        <h4>Desde: <t t-esc="desde"></t> Hasta: <t t-esc="hasta"></t> </h4>
+                                        <h4>Vendedor: <t t-esc="empleado"></t></h4>
+                                     </div>
+                                        <table class="table mt16">
+                                              <thead class="thead-dark">
+                                                <tr >
+                                                  <th scope="col">Pedido</th>
+                                                  <th scope="col">Cliente</th>
+                                                  <th scope="col">Importe</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                 <t t-foreach="pedidos" t-as="record" >
+                                                      <tr >
+                                                        <td>
+                                                            <t t-esc="record['pedido']" />
+                                                        </td>
+                                                        <td>
+                                                            <t t-esc="record['cliente']" />
+                                                        </td>
+                                                        <td>
+                                                            <t t-esc="record['total']" />
+                                                        </td>
+                                                    </tr>
+                                                 </t>
+                                              </tbody>
+                                        </table>
+                                        <div class="col-md-12" align="rigth">
+                                        <h4>Total:  <t t-esc="total" ></t></h4>
+                                        </div>
+                                   
+                                </div>
+                                
+                        </div>
+            </t>
+        </t>
+    </template>
+        
+    </data>
+</odoo>

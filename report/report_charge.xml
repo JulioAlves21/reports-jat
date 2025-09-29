@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <report id="reportcharge" 
+          string="Reporte de Carga" 
+          model="sale.order" 
+          report_type="qweb-pdf" 
+          name="report.chargeReportInternallayout"
+          file="report.chargeReportInternallayout"
+          menu="True" 
+         /> 
+    <data>
+        <template id="chargeReportInternallayout" >
+            <t t-call="web.html_container">
+                    <t t-call="web.internal_layout">
+                        <div class="page" style="font-size:18px">
+                                <div class="row">
+                                    <div class="col-md-12" align="left">
+                                        <h2>Reporte Cargas</h2>
+                                        <h4>De: <t t-esc="desde"></t> Hasta: <t t-esc="hasta"></t> </h4>
+                                        <h4>Empleado: <t t-esc="empleado"></t></h4>
+                                        <table class="table mt16">
+                                              <thead class="thead-dark">
+                                                <tr >
+                                                  <th scope="col">Producto</th>
+                                                  <th scope="col">Cantidad</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                <t t-foreach="productos" t-as="record" >
+                                                      <tr >
+                                                        <td>
+                                                            <t t-esc="record['nombre']" />
+                                                        </td>
+                                                        <td>
+                                                            <t t-esc="record['cant']" />
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                              </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                        </div>
+            </t>
+        </t>
+    </template>
+        
+    </data>
+</odoo>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_sale_report_wizard" model="ir.ui.view">
+            <field name="name">Reporte Ventas</field>
+            <field name="model">ventas.report.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Invoice Sales Order">
+                    <group>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                    </group>
+                    <separator string="Empleado" />
+                    <field name="user_id"/> 
+                    <footer>
+                        <button 
+                                name="print_report" 
+                                string="Print Report" 
+                                type="object" class="btn-primary"/>
+                        <button 
+                                name="print_data" 
+                                string="Print data" 
+                                type="object" class="btn-primary"/>
+                        <button 
+                                string="Cancel" 
+                                class="btn-secondary" 
+                                special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_sale_report_wizard" model="ir.actions.act_window">
+            <field name="name">Reporte Ventas</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ventas.report.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+    <menuitem 
+            name="Reporte Ventas" 
+            id="sale_report_wizard_menu" 
+            parent="sale.menu_report_product_all" 
+            action="action_view_sale_report_wizard"
+            />
+</data>
+
+</odoo>
